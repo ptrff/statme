@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Statme - Профиль</title>
+  <link rel="stylesheet" href="../styles/mvp.css">
+  <link rel="stylesheet" href="../styles/index.css">
+  <link rel="stylesheet" href="../styles/dialog.css">
+  <link rel="stylesheet" href="../styles/background_animation.css">
+  <link rel="stylesheet" href="../styles/user-profile.css">
+</head>
+<body class="background-animation" style="user-select: none">
+
+<header class="background-animation">
+  <div class="logo" onclick="window.location.href = 'index.html'">
+    <img src="../img/logo.svg" alt="logo">
+    <a style="display: flex; text-decoration: none;">
+      <h1 style="color: var(--color-accent)">Stat</h1>
+      <h1 style="color: var(--color-secondary-accent)">me</h1>
+    </a>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="help.html">Справка</a></li>
+      <li id="logout"><a href="#">Выйти</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="profile-container">
+
+  <div class="profile-header">
+    <div class="avatar avatar_hover" id="avatar_change_container">
+      <img id="avatar" alt=" " src="">
+      <img id="avatar_change" src="../img/upload.svg" alt="avatar">
+    </div>
+    <div>
+      <h1 id="username" style="margin: 0"></h1>
+      <p id="email"></p>
+      <p id="status"></p>
+    </div>
+
+    <button id="edit_profile">
+      <img src="../img/edit.svg" alt="edit profile">
+    </button>
+  </div>
+
+  <div class="profile-body-group">
+    <div class="profile-body">
+
+      <h2 id="games_section" class="section-title section-title-clickable"
+          style="margin-top: 0">
+        Игры
+        <img id="add_game_ic" src="../img/plus.svg" style="padding: 5px 0"
+             alt="add">
+      </h2>
+
+      <div id="games">
+      </div>
+
+      <h2 id="achievements_section" class="section-title">
+        Достижения
+      </h2>
+      <div id="achievements" class="scrollable">
+      </div>
+    </div>
+    <div class="profile-right" id="fast_links">
+    </div>
+  </div>
+</div>
+
+<div class="dialog-container invisible" id="edit-profile-dialog"
+     style="width: 40%; min-width: var(--width-card); max-width: var(--width-card-wide)">
+  <div class="bg-dark" id="edit-close"></div>
+  <div class="bg-dialog"></div>
+  <div class="dialog-header" style="display: flex; font-size: 1.5rem">
+    Редактирование профиля
+  </div>
+
+  <form id="edit_profile_form">
+    <label for="edit_username">Никнейм:</label>
+    <input type="text" id="edit_username" name="edit_username" required>
+
+    <label for="edit_status">Статус:</label>
+    <input type="text" id="edit_status" name="edit_status">
+
+    <label for="edit_photo">Ссылка на изображение профиля:</label>
+    <input type="text" id="edit_photo" name="edit_photo">
+
+    <button style="margin-top: 1rem">Сохранить</button>
+  </form>
+</div>
+
+<div class="dialog-container invisible" id="add-game-dialog"
+     style="width: 40%; min-width: var(--width-card); max-width: var(--width-card-wide)">
+  <div class="bg-dark" id="game-close"></div>
+  <div class="bg-dialog"></div>
+  <div class="dialog-header" style="display: flex; font-size: 1.5rem">
+    Добавить игру
+  </div>
+  <input type="text" id="game_search" placeholder="Введите название игры"
+         aria-label="Поиск">
+  <div class="dialog-search-results">
+    <ul class="results-list" id="game_search_results">
+    </ul>
+  </div>
+
+  <div class="game-card">
+    <div class="game-card-header">
+      <img src="" alt=" " id="game-img">
+      <h2 id="game-title"></h2>
+    </div>
+    <p id="game-description"></p>
+  </div>
+
+  <button id="add-game-button">Добавить</button>
+</div>
+
+<div class="dialog-container invisible" id="create-game-dialog"
+     style="width: 40%; min-width: var(--width-card); max-width: var(--width-card-wide)">
+  <div class="bg-dark" id="create-game-close"></div>
+  <div class="bg-dialog"></div>
+  <div class="dialog-header" style="display: flex; font-size: 1.5rem">
+    Создать игру
+  </div>
+
+  <form id="create_game_form">
+    <label for="create_game_name">Название игры:</label>
+    <input type="text" id="create_game_name" name="create_game_name" required>
+
+    <label for="create_game_description">Описание игры:</label>
+    <input type="text" id="create_game_description" name="create_game_description">
+
+    <label for="create_game_img">Ссылка на изображение игры:</label>
+    <input type="text" id="create_game_img" name="create_game_img">
+
+    <button style="margin-top: 1rem">Создать</button>
+  </form>
+</div>
+
+<footer style="margin-top: auto">
+  <p>Developed by ptrff  |  2024  |  Петров Игорь Рафаэлевич, ИКБО-03-22</p>
+</footer>
+
+<script src="../js/ApiService.js"></script>
+<script src="../js/UserProfile.js"></script>
+</body>
+</html>

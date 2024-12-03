@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  mail:
+    host: smtp.yandex.ru
+    port: 465
+    protocol: smtps
+    username: mailing@yandex.ru
+    password: password
+    debug: true
+
+  application:
+    name: statme
+
+  token:
+    signing:
+      key: your_token

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Statme - Авторизация</title>
+  <link rel="stylesheet" href="../styles/mvp.css">
+  <link rel="stylesheet" href="../styles/dialog.css">
+  <link rel="stylesheet" href="../styles/elements.css">
+  <link rel="stylesheet" href="../styles/background_animation.css">
+  <style>
+    #login_result, #register_result {
+      margin-left: 1rem;
+    }
+
+    #login_result:hover, #register_result:hover {
+      cursor: auto;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body class="background-animation" style="user-select: none">
+<div class="dialog-container"
+     style="width: 40%; min-width: var(--width-card); max-width: var(--width-card-wide)">
+  <div class="dialog-header" style="display: flex">
+    <img src="../img/logo.svg" alt="logo"
+         style="width: 2rem; margin-right: 1rem">
+    <div style="color: var(--color-accent)">Stat</div>
+    <div style="color: var(--color-secondary-accent)">me </div>
+    всем!
+  </div>
+  <div class="dialog-body" style="margin-bottom:0">Вы авторизуетесь, а мы
+    будем вас отслеживать!
+  </div>
+  <div class="dialog-body" style="margin-top:0; font-size: 0.75rem">точнее
+    вашу игровую статистику (✿◠‿◠)
+  </div>
+
+  <div class="tab-buttons-container">
+    <button id="login_tab" class="tab-button active"
+            onclick="tabManager.showTab('login')">Вход
+    </button>
+    <button id="register_tab" class="tab-button"
+            onclick="tabManager.showTab('register')">
+      Регистрация
+    </button>
+  </div>
+
+  <div id="login" class="tab-content">
+    <form id="login_form">
+      <label for="login_email">Почта:</label>
+      <input type="email" id="login_email" name="login_email" required>
+
+      <label for="login_password">Пароль:</label>
+      <input type="password" id="login_password" name="login_password"
+             required>
+
+      <button style="margin-top: 1rem">Войти</button>
+
+      <a id="login_result" style="color: var(--color-accent)"></a>
+    </form>
+  </div>
+
+  <div id="register" class="tab-content" style="display:none;">
+    <form id="register_form">
+      <label for="register_nickname">Никнейм:</label>
+      <input type="text" id="register_nickname" name="register_nickname"
+             required>
+
+      <label for="register_email">Почта:</label>
+      <input type="email" id="register_email" name="register_email" required>
+
+      <label for="register_password">Пароль:</label>
+      <input type="password" id="register_password" name="register_password"
+             required>
+
+      <label for="register_password_confirm">Подтвердите пароль:</label>
+      <input type="password" id="register_password_confirm"
+             name="register_password_confirm" required>
+
+      <button style="margin-top: 1rem">Зарегистрироваться</button>
+
+      <a id="register_result" style="color: var(--color-accent)"></a>
+    </form>
+
+  </div>
+
+  <div class="dialog-footer"
+       style="flex-direction: column; align-items: flex-end">
+    <a href="reset-password.html" style="">Забыли пароль?</a>
+    <a href="create-company.html" style="color: var(--color-text-secondary)">Создать
+      профиль
+      компании</a>
+  </div>
+</div>
+
+<script src="../js/ApiService.js"></script>
+<script src="../js/tab-manager.js"></script>
+<script src="../js/Auth.js"></script>
+<script>
+  const tabManager = new TabManager('login', 'register')
+</script>
+</body>
+</html>

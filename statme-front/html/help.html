@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Statme - Справка</title>
+  <link rel="stylesheet" href="../styles/mvp.css">
+  <link rel="stylesheet" href="../styles/index.css">
+  <link rel="stylesheet" href="../styles/help.css">
+  <link rel="stylesheet" href="../styles/background_animation.css">
+</head>
+<body class="background-animation" style="user-select: none">
+
+<header class="background-animation">
+  <div class="logo" onclick="window.location.href = 'index.html'">
+    <img src="../img/logo.svg" alt="logo">
+    <a style="display: flex; text-decoration: none;">
+      <h1 style="color: var(--color-accent)">Stat</h1>
+      <h1 style="color: var(--color-secondary-accent)">me</h1>
+    </a>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Главная</a></li>
+      <li id="auth"><a href="auth.html">Авторизация</a></li>
+      <li id="profile" style="display: none"><a href="user-profile.html">Профиль</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<div style="margin-top: 8rem; display: grid">
+  <div class="help-section">
+    <h1>Оглавление</h1>
+    <ul>
+      <li><a href="#p">Игрокам</a></li>
+      <ul>
+        <li><a href="#p-info">Возможности</a></li>
+      </ul>
+      <li><a href="#c">Компаниям</a></li>
+      <ul>
+        <li><a href="#c-info">Информация</a></li>
+        <li><a href="#c-api">API</a></li>
+      </ul>
+    </ul>
+  </div>
+  <br>
+  <br>
+  <div class="help-section">
+    <h1 id="p">Игрокам</h1>
+    Этот сайт предназначен для удобного управления игровыми профилями,
+    отслеживания прогресса и достижения ваших целей в играх. Мы предлагаем
+    уникальную возможность не только для игроков, но и для компаний,
+    разрабатывающих игры. Платформа объединяет этих пользователей в единую
+    экосистему.
+    <br>
+    <br>
+    <h3 id="p-info">Возможности:</h3>
+    <ul>
+      <li>Создавать и редактировать профиль: В вашем
+        профиле вы можете обновлять информацию о себе, добавлять или удалять
+        игры, в которые играете, и отслеживать достижения.
+      </li>
+      <li>Отслеживать прогресс: Мы предоставляем
+        подробную статистику по вашим играм. Просто добавьте игру на сайт и
+        войдите в аккаунт в игре. Компании сами будут отслеживать ваш прогресс.
+      </li>
+      <li>Заработать достижения: Игры могут быть
+        связаны с системой достижений, и мы отслеживаем, какие из них вы смогли
+        получить. Это помогает не только следить за вашим успехом, но и
+        стимулирует к дальнейшим достижениям.
+      </li>
+      <li>Сохранять ваши любимые игры: На платформе
+        можно добавлять игры в список интересующих. Вы сможете легко вернуться
+        к ним в любое время и продолжить играть.
+      </li>
+    </ul>
+  </div>
+  <br>
+  <br>
+  <div class="help-section">
+    <h1 id="c">Компаниям:</h1>
+    <h3 id="c-info">Информация:</h3>
+    <ul>
+      <li>Разработка и публикация игр: Компании могут использовать платформу
+        для создания игр и публикации их на сайте. Мы предоставляем все
+        необходимые инструменты для того, чтобы отслеживание прогресса было
+        удобным для Вас и Ваших игроков.
+      </li>
+      <li>Отслеживание прогресса пользователей: Владелец компании может
+        публиковать прогресс игроков по их достижениям в игре, что повышает
+        интерес к игре.
+      </li>
+    </ul>
+    <br>
+    <br>
+    <h3 id="c-api">API:</h3>
+    <p style="color: var(--color-accent)">Все запросы (кроме авторизации) к API
+      должны быть
+      аутентифицированы при помощи вашего Bearer
+      токена в заголовке "Authorization". <span
+        style="color: var(--color-text)">Токен можно скопировать на странице игры.</span>
+    </p>
+    <br>
+
+    <h3>1. Авторизация пользователя</h3>
+    <p><b>POST</b>, endpoint: /api/auth/login</p>
+    <p>Этот запрос позволяет войти в аккаунт пользователя.</p>
+    <p class="code-block-header">Тело запроса:</p>
+    <pre class="code-block">
+{
+    "email": "[почта]",
+    "password": "[пароль]"
+}</pre>
+    <p>Ответ - токен авторизации пользователя.</p>
+    <br>
+
+    <h3>2. Получение профиля пользователя</h3>
+    <p><b>GET</b>, endpoint: /api/profile/get</p>
+    <p>Этот запрос позволяет получить основную информацию о пользователе.</p>
+    <p>Если добавить в заголовок параметр <b>id</b> с идентификатором пользователя,
+      можно получить информацию о другом пользователе.</p>
+    <p class="code-block-header">Ответ:</p>
+    <pre class="code-block">
+{
+    "id": Long,
+    "email": String,
+    "username": String,
+    "photo": String or NULL,
+    "status": String or NULL,
+    "role": String
+}</pre>
+    <br>
+
+    <h3>3. Получение списка достижений пользователя</h3>
+    <p><b>GET</b>, endpoint: /api/profile/achievements</p>
+    <p>Этот запрос позволяет получить список достижений пользователя.</p>
+    <p class="code-block-header">Ответ:</p>
+    <pre class="code-block">
+[
+    {
+        "id": Long,
+        "title": String
+    },
+    ...
+]</pre>
+    <br>
+
+    <h3>4. Добавление достижения</h3>
+    <p><b>POST</b>, endpoint: /api/publish/achievement</p>
+    <p>Этот запрос позволяет компании добавить достижение пользователю,
+      указав его ID и ID достижения.</p>
+
+    <p class="code-block-header">Тело запроса:</p>
+    <pre class="code-block">
+{
+    "userId": "[идентификатор пользователя]",
+    "achievementId": "[идентификатор достижения]"
+}</pre>
+    <br>
+    <br>
+
+
+  </div>
+</div>
+
+
+<footer>
+  <p>Developed by ptrff  |  2024  |  Петров Игорь Рафаэлевич, ИКБО-03-22</p>
+</footer>
+
+<script src="../js/ApiService.js"></script>
+<script>
+  if (new ApiService().haveToken()) {
+    document.getElementById("auth").style.display = "none"
+    document.getElementById("profile").style.display = "block"
+  }
+</script>
+</body>
+</html>

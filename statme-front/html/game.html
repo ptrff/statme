@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Statme - Игра</title>
+  <link rel="stylesheet" href="../styles/mvp.css">
+  <link rel="stylesheet" href="../styles/index.css">
+  <link rel="stylesheet" href="../styles/dialog.css">
+  <link rel="stylesheet" href="../styles/background_animation.css">
+  <link rel="stylesheet" href="../styles/user-profile.css">
+</head>
+<body class="background-animation" style="user-select: none">
+
+<header class="background-animation">
+  <div class="logo" onclick="window.location.href = 'index.html'">
+    <img src="../img/logo.svg" alt="logo">
+    <a style="display: flex; text-decoration: none;">
+      <h1 style="color: var(--color-accent)">Stat</h1>
+      <h1 style="color: var(--color-secondary-accent)">me</h1>
+    </a>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="#">Справка</a></li>
+      <li id="auth"><a href="auth.html">Авторизация</a></li>
+      <li id="profile" style="display: none"><a href="user-profile.html">Профиль</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="profile-container">
+
+  <div class="profile-header">
+    <div class="avatar">
+      <img id="avatar" alt=" " src="">
+    </div>
+    <div>
+      <h1 id="title" style="margin: 0"></h1>
+      <p id="company"></p>
+      <p id="description"></p>
+    </div>
+  </div>
+
+  <div class="profile-body-group">
+    <div class="profile-body">
+
+      <h2 id="achievements_section" class="section-title"
+          style="margin-top: 0">
+        Достижения
+        <img id="add_achievement_ic" src="../img/plus.svg" style="display: none;padding: 5px 0"
+             alt="add">
+      </h2>
+
+      <div id="achievements">
+      </div>
+
+    </div>
+    <div class="profile-right invisible" id="api">
+      <h2 id="fast_links_section" style="margin-top: 0;margin-bottom: 0.5rem" class="section-title">API</h2>
+      <button id="copy_token" class="api-button">Скопировать токен</button>
+      <button id="help" class="api-button" onclick="window.location.href = 'help.html'">Открыть справку</button>
+    </div>
+  </div>
+</div>
+
+<div class="dialog-container invisible" id="create-achievement-dialog"
+     style="width: 40%; min-width: var(--width-card); max-width: var(--width-card-wide)">
+  <div class="bg-dark" id="create-achievement-close"></div>
+  <div class="bg-dialog"></div>
+  <div class="dialog-header" style="display: flex; font-size: 1.5rem">
+    Добавить достижение
+  </div>
+
+  <form id="create_achievement_form">
+    <label for="create_achievement_name">Название:</label>
+    <input type="text" id="create_achievement_name" name="create_achievement_name" required>
+    <button style="margin-top: 1rem">Добавить</button>
+  </form>
+</div>
+
+<footer style="margin-top: auto">
+  <p>Developed by ptrff  |  2024  |  Петров Игорь Рафаэлевич, ИКБО-03-22</p>
+</footer>
+
+<script src="../js/ApiService.js"></script>
+<script src="../js/Game.js"></script>
+</body>
+</html>

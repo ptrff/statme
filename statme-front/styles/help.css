@@ -1,0 +1,38 @@
+.help-section {
+  width: 70%;
+  max-width: 70%;
+  justify-self: center;
+}
+
+.help-section h1 {
+  text-align: center;
+}
+
+.help-section a {
+  font-size: 18px;
+}
+
+.code-block {
+  background-color: var(--color-bg-1);
+  border-left: 4px solid var(--color-accent);
+  padding: 1rem;
+  font-family: 'Courier New', Courier, monospace;
+  white-space: pre-wrap;
+  overflow-x: auto;
+  margin: 0 0 20px;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+.code-block-header {
+  color: var(--color-accent);
+  font-weight: bolder;
+  margin-bottom: 0;
+  margin-top: 1.5rem;
+  width: fit-content;
+  padding: 0 0.5rem;
+  border-left: 4px solid var(--color-accent);
+  border-bottom: 4px solid var(--color-accent);
+}

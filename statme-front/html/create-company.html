@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Statme - Регистрация компании</title>
+  <link rel="stylesheet" href="../styles/mvp.css">
+  <link rel="stylesheet" href="../styles/dialog.css">
+  <link rel="stylesheet" href="../styles/elements.css">
+  <link rel="stylesheet" href="../styles/background_animation.css">
+</head>
+<body class="background-animation" style="user-select: none">
+<div class="dialog-container"
+     style="width: 40%; min-width: var(--width-card); max-width: var(--width-card-wide)">
+  <div class="dialog-header">
+    <img src="../img/logo.svg" alt="logo"
+         style="width: 2rem; margin-right: 1rem">
+    <div style="color: var(--color-accent)">Stat</div>
+    <div style="color: var(--color-secondary-accent)">me </div>
+    компаниям!
+  </div>
+  <div class="dialog-body" style="margin-bottom: 0"> Создав аккаунт компании,
+    вы сможете получить доступ
+    к API!
+  </div>
+
+  <form style="padding-bottom: 0" id="register">
+    <label for="register_name">Название компании:</label>
+    <input type="text" id="register_name" name="register_name" required>
+
+    <label for="register_email">Почта:</label>
+    <input type="email" id="register_email" name="register_email" required>
+
+    <label for="register_password">Пароль:</label>
+    <input type="password" id="register_password" name="register_password"
+           required>
+
+    <label for="register_password_confirm">Подтвердите пароль:</label>
+    <input type="password" id="register_password_confirm"
+           name="register_password_confirm" required>
+
+    <button type="submit" style="margin-top: 1rem">Отправить запрос</button>
+  </form>
+
+  <div style="font-size: 0.8rem">
+    Отправляя форму, Вы подтверждаете своё согласие.
+  </div>
+
+  <div class="dialog-footer" style="margin-top: 1rem">
+    <a href="auth.html" style="">Вернуться на страницу авторизации</a>
+  </div>
+
+</div>
+<script src="../js/ApiService.js"></script>
+<script>
+  const api = new ApiService()
+  document.getElementById("register").addEventListener('submit', function (e) {
+    e.preventDefault()
+    const email = document.getElementById('register_email').value.trim()
+    const username = document.getElementById('register_name').value.trim()
+    const password = document.getElementById('register_password').value.trim()
+    const password_c = document.getElementById('register_password_confirm').value.trim()
+
+    if (password !== password_c) {
+      alert("Пароли не совпадают")
+      return
+    }
+
+    if (password.length < 8) {
+      alert("Пароль должен содержать не менее 8 символов")
+      return
+    }
+
+    const body = {
+      "email": email,
+      "username": username,
+      "password": password
+    }
+
+    api.post('/api/auth/company/register', body,
+      (data) => {
+        if ("token" in data) {
+          api.saveToken(data.token)
+          alert("Отлично! Осталось только подождать, когда вашу заявку одобрит администратор.")
+          window.location.href = "user-profile.html"
+        } else {
+          alert("Произошла ошибка.")
+        }
+      })
+  });
+
+</script>
+</body>
+</html>

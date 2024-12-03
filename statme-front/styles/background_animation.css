@@ -1,0 +1,56 @@
+@-webkit-keyframes bg-scrolling-reverse {
+    100% {
+        background-position: 0 -50px;
+    }
+}
+@-moz-keyframes bg-scrolling-reverse {
+    100% {
+        background-position: 0 -50px;
+    }
+}
+@-o-keyframes bg-scrolling-reverse {
+    100% {
+        background-position: 0 -50px;
+    }
+}
+@keyframes bg-scrolling-reverse {
+    100% {
+        background-position: 0 -50px;
+    }
+}
+@-webkit-keyframes bg-scrolling {
+    0% {
+        background-position: 0 -50px;
+    }
+}
+@-moz-keyframes bg-scrolling {
+    0% {
+        background-position: 0 -50px;
+    }
+}
+@-o-keyframes bg-scrolling {
+    0% {
+        background-position: 0 -50px;
+    }
+}
+@keyframes bg-scrolling {
+    0% {
+        background-position: 0 -50px;
+    }
+}
+.background-animation {
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAi0lEQVRoge3aMQ6AIBAAwcPwA+L/n4qltEdCXC87lY3JrTREaPcYM/LaxjsZ6ZmuE1N8oS/Pp79yRmaWGVFoRQyhMYTGEBpDaMqE9GBtTXa0iEIrYgiNITSG0BhCYwiNITSG0BhCYwiNITSG0PR4Dx7/+n/LozckQ2gMoTGExhCa9XZQ5o6U97VOeQCnmwenBwoM2wAAAABJRU5ErkJggg==");
+    background-color: var(--color-bg);
+    -webkit-animation: bg-scrolling-reverse 8s infinite ease-in-out;
+    /* Safari 4+ */
+    -moz-animation: bg-scrolling-reverse 8s infinite ease-in-out;
+    /* Fx 5+ */
+    -o-animation: bg-scrolling-reverse 8s infinite ease-in-out;
+    /* Opera 12+ */
+    animation: bg-scrolling-reverse 8s infinite ease-in-out;
+    /* IE 10+ */
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+    -o-animation-timing-function: linear;
+    animation-timing-function: linear;
+}
